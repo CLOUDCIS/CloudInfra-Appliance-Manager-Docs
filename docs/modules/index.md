@@ -32,6 +32,11 @@ detection.
 | [NGINX](nginx.md) | 10 | 5 |
 | [Generic Linux](generic-linux.md) | 3 | 43 |
 
+Generic Linux is present on every image. The application module is the one the listing you
+launched is named after — NGINX today, with GitLab and Redis to follow. An image carries the
+module for its own application, so the console only ever offers you controls for software
+that is actually there.
+
 ## When an application is not installed
 
 A module whose application is absent reports itself not installed, and its pages disappear

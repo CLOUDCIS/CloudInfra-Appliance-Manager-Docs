@@ -3,14 +3,14 @@ site_description: >-
   Security assessment, remediation and drift detection for Linux appliances,
   with an NGINX reverse proxy module.
 site_url: https://cloudcis.github.io/CloudInfra-Appliance-Manager-Docs/
-repo_url: https://github.com/CLOUDCIS/CloudInfra-Appliance-Manager-Docs
-edit_uri: edit/main/docs/
 
 copyright: Cloud Infrastructure Services
 
 theme:
   name: material
   language: en
+  logo: assets/logo.svg
+  favicon: assets/favicon.svg
   features:
     - navigation.tabs
     - navigation.sections
@@ -18,28 +18,24 @@ theme:
     - navigation.instant
     - navigation.tracking
     - content.code.copy
-    - content.action.edit
     - search.suggest
     - search.highlight
     - toc.follow
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-  icon:
-    repo: fontawesome/brands/github
-
 extra_css:
   - stylesheets/extra.css
 

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The console's brand mark, set on a white tile. The shield is the portal's blue, and
+       the header bar is that same blue, so the mark needs a surface of its own or its
+       silhouette disappears. -->
+  <rect width="64" height="64" rx="14" fill="#ffffff"/>
+  <g transform="translate(8 8) scale(1)">
+    <path d="M24 3.5 41.5 10.7v13.4c0 10.7-7.4 17.2-17.5 20.4C13.9 41.3 6.5 34.8 6.5 24.1V10.7Z" fill="#00a4ef"/>
+    <g fill="#ffffff">
+      <rect x="14.4" y="13.2" width="19.2" height="5.4" rx="1.9"/>
+      <rect x="14.4" y="21.3" width="19.2" height="5.4" rx="1.9"/>
+      <rect x="14.4" y="29.4" width="19.2" height="5.4" rx="1.9"/>
+    </g>
+    <g fill="#00a4ef">
+      <circle cx="18.1" cy="15.9" r="1.25"/>
+      <circle cx="18.1" cy="24" r="1.25"/>
+      <circle cx="18.1" cy="32.1" r="1.25"/>
+    </g>
+    <circle cx="35.6" cy="33.4" r="7" fill="#ffffff"/>
+    <circle cx="35.6" cy="33.4" r="5.1" fill="#7fba00"/>
+  </g>
+</svg>

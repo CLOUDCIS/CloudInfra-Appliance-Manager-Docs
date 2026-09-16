@@ -1,8 +1,28 @@
 # Installation
 
+## Choosing an image
+
+CloudInfra Appliance Manager is published as a family of AWS Marketplace AMIs. Each one is
+the same appliance — the same console, the same controls, the same remediation and backup
+machinery — packaged with a different application already installed and under management.
+
+| Listing | Application managed | Status |
+|---|---|---|
+| CloudInfra NGINX Appliance Manager | NGINX (reverse proxy, web server) | Available |
+| CloudInfra GitLab Appliance Manager | GitLab | Planned |
+| CloudInfra Redis Appliance Manager | Redis | Planned |
+
+Pick the listing for the application you want to run. If you only want the host hardening
+and no managed application, any of them will do: the application module is one part of the
+appliance, and the host controls apply on every image.
+
+Everything in this section applies to all of them. Where a page describes something
+specific to one application, it says so, and the [Modules](../modules/index.md) section
+covers each application on its own terms.
+
 ## Launching the appliance
 
-Launch an instance from the **Cloud Infrastructure Services NGINX Appliance Manager** AMI.
+Launch an instance from your chosen listing's AMI.
 
 | | |
 |---|---|
@@ -47,7 +67,7 @@ To replace it with your own certificate, see [Ports and paths](../reference/port
 | `cloudinfra-manager` | `cloudinfra` | The console and the API. Holds no privileges. |
 | `cloudinfra-agent` | `root` | Performs privileged actions, from a fixed list. |
 | `cloudinfra` | — | Command line client. |
-| `nginx` | `root` / `nginx` | The reverse proxy the appliance manages. |
+| The managed application | Its own accounts | For the NGINX image, `nginx` running as `root` / `nginx`. |
 
 The split matters: the part exposed to the network cannot change the host directly. It asks
 the agent, and the agent will only perform actions that are on a list compiled into it.

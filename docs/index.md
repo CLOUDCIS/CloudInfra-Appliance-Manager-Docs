@@ -4,7 +4,9 @@ CloudInfra Appliance Manager assesses a Linux host against a set of security con
 explains what it found, and — when you approve it — fixes what is wrong without breaking
 what is working.
 
-It ships as an AWS Marketplace AMI with NGINX already installed and managed.
+It ships as a family of AWS Marketplace AMIs, each with one application already installed
+and under management. NGINX is available now; GitLab and Redis follow. The appliance is the
+same in all of them — only the managed application differs.
 
 ![The appliance overview](assets/screenshots/overview.png)
 /// caption

@@ -1,3 +1,35 @@
+/*
+ * The console's palette, so the documentation and the product it documents are plainly the
+ * same thing. Material's indigo default was a different colour from anything in the
+ * appliance.
+ *
+ * Taken from dashboard/src/index.css:
+ *   --color-ci-primary  #00a4ef   the brand blue, and the shield in the mark
+ *   --color-ci-info     #0078d4   the darker blue the console uses for actions
+ *   --color-ci-sidebar  #0e1e33   the navy behind the console's navigation
+ */
+:root {
+  --md-primary-fg-color: #0078d4;
+  --md-primary-fg-color--light: #00a4ef;
+  --md-primary-fg-color--dark: #005a9e;
+  --md-accent-fg-color: #00a4ef;
+  --md-accent-fg-color--transparent: rgba(0, 164, 239, 0.1);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #0e1e33;
+  --md-primary-fg-color--light: #00a4ef;
+  --md-primary-fg-color--dark: #08131f;
+  --md-accent-fg-color: #00a4ef;
+}
+
+/* The mark carries its own white tile, so the header does not need to pad it further. */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
 /* Tabular figures, so scores and byte counts line up in tables. */
 .md-typeset table td code,
 .md-typeset table th {
