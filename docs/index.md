@@ -58,3 +58,6 @@ access to it is your responsibility — see [Installation](getting-started/insta
 2. [First boot](getting-started/first-boot.md) — what happens the first time it starts, and
    creating the administrator
 3. [Quickstart](getting-started/quickstart.md) — your first assessment and your first fix
+
+Need a hand? [Contact Cloud Infrastructure Services](https://cloudinfrastructureservices.co.uk/contact-us/),
+and see [Support](about/support.md) for what to send with a request.

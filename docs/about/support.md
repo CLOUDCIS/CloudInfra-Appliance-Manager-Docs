@@ -1,5 +1,15 @@
 # Support
 
+## Contacting us
+
+Support for CloudInfra Appliance Manager is provided by Cloud Infrastructure Services.
+
+[Submit a support request](https://cloudinfrastructureservices.co.uk/contact-us/){ .md-button .md-button--primary }
+
+Send the details below with your request. Almost every question we are asked can be
+answered from a diagnostics bundle and the version, and a request without them takes a
+round trip before anyone can start.
+
 ## Before raising a request
 
 Collect a diagnostics bundle. It contains the configuration, versions, recent logs and
@@ -22,6 +32,7 @@ sudo cloudinfra diagnostics --output /tmp/bundle.tar.gz
 | What happened instead | |
 | The correlation ID | Shown in any error message, and ties the console request to the privileged action behind it |
 | The appliance version | **Administration**, or `cloudinfra status` |
+| Which image you launched | `cat /etc/cloudinfra/build-manifest.json` — the product version, the module, the application version and the date the image was built |
 
 ## Useful commands
 
@@ -42,10 +53,13 @@ sudo cloudinfra agent actions
 
 ## Reporting a security issue
 
-Please report suspected vulnerabilities privately rather than in a public issue, so a fix
-can be prepared before the detail is public.
+Please report suspected vulnerabilities privately, through the
+[contact form](https://cloudinfrastructureservices.co.uk/contact-us/), rather than anywhere
+public — so a fix can be prepared before the detail is.
 
-Include the version, what you observed, and how to reproduce it.
+Include the version, what you observed, and how to reproduce it. Please do not include
+credentials, private keys or a diagnostics bundle you have not checked; if a reproduction
+needs one, say so and we will arrange a way to send it.
 
 ## A note on findings
 
