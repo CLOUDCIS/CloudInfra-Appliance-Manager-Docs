@@ -58,7 +58,16 @@ Your browser will warn about the certificate. That is expected: the appliance ge
 self-signed certificate for itself on first boot, because a certificate baked into a shared
 image would be identical on every customer's instance — and therefore worthless.
 
-To replace it with your own certificate, see [Ports and paths](../reference/ports-and-paths.md).
+To replace it with a certificate your browsers already trust:
+
+```bash
+sudo cloudinfra tls install --cert fullchain.pem --key privkey.pem
+```
+
+It checks the pair before replacing anything and puts the old one back if the console does
+not return — see
+[Replacing the TLS certificate](../reference/ports-and-paths.md#replacing-the-tls-certificate),
+which also covers renewal hooks.
 
 ## What is installed
 

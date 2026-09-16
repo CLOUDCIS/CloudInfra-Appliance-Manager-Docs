@@ -80,6 +80,29 @@ clears any lockout, revokes the account's sessions, and is written to the audit 
 Requires a shell on the appliance and `sudo`. There is deliberately no way to do this over
 the network.
 
+### `cloudinfra tls show`
+
+The certificate the console is serving: subject, names, validity, and the SHA-256
+fingerprint your browser shows you.
+
+```bash
+sudo cloudinfra tls show
+```
+
+### `cloudinfra tls install`
+
+Replaces the console's certificate, safely.
+
+```bash
+sudo cloudinfra tls install --cert fullchain.pem --key privkey.pem
+```
+
+Checks the pair, keeps the one in use, restarts the console, and waits for it to answer —
+restoring the previous certificate if it does not. `--no-restart` installs without touching
+the running console.
+
+See [Replacing the TLS certificate](ports-and-paths.md#replacing-the-tls-certificate).
+
 ## Service management
 
 The appliance's own services are ordinary systemd units:
