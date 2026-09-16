@@ -54,6 +54,32 @@ sudo cloudinfra diagnostics --output /tmp/bundle.tar.gz
 Generates first-boot TLS material and the secrets key. Run automatically by
 `cloudinfra-firstboot.service` on the first boot; you should not need it.
 
+### `cloudinfra users list`
+
+The accounts on this appliance, their roles and whether they are locked out. Reads the
+appliance's database directly, so it works when the console does not.
+
+```bash
+sudo cloudinfra users list
+```
+
+### `cloudinfra users reset-password`
+
+Sets a new password for an account, for recovering an appliance whose only administrator
+password has been lost.
+
+```bash
+sudo cloudinfra users reset-password --username admin
+```
+
+The password is read from the terminal — never from an argument, which would put it in your
+shell history and in the process list where any user on the host can read it. The reset
+clears any lockout, revokes the account's sessions, and is written to the audit log as
+`users.password_reset.local`.
+
+Requires a shell on the appliance and `sudo`. There is deliberately no way to do this over
+the network.
+
 ## Service management
 
 The appliance's own services are ordinary systemd units:
