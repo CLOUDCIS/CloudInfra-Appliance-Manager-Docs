@@ -1,0 +1,10 @@
+/* Tabular figures, so scores and byte counts line up in tables. */
+.md-typeset table td code,
+.md-typeset table th {
+  font-variant-numeric: tabular-nums;
+}
+
+/* A little more room around admonitions: several pages lead with one. */
+.md-typeset .admonition {
+  margin: 1.2em 0;
+}

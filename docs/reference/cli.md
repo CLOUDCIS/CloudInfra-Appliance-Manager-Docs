@@ -1,0 +1,73 @@
+# Command line
+
+The `cloudinfra` command is installed on the appliance for diagnosis and first-boot
+provisioning. It is not a second way to administer the appliance — day-to-day work happens
+in the console, where actions are authenticated, authorised and audited.
+
+## Commands
+
+### `cloudinfra status`
+
+Appliance version, agent reachability and service state.
+
+```bash
+cloudinfra status
+```
+
+### `cloudinfra agent ping`
+
+Checks the privileged agent is reachable over its socket. The first thing to run when the
+console reports that the agent is not responding.
+
+```bash
+sudo cloudinfra agent ping
+```
+
+### `cloudinfra agent actions`
+
+Lists every privileged action this build permits. There is no "run a command" action at any
+privilege level, and this is how you confirm that for yourself.
+
+```bash
+sudo cloudinfra agent actions
+```
+
+### `cloudinfra jobs list`
+
+Recent background jobs — assessments, remediations, backups, drift checks — with their
+states.
+
+```bash
+cloudinfra jobs list
+```
+
+### `cloudinfra diagnostics`
+
+Collects a support bundle. Passwords, tokens and keys are removed.
+
+```bash
+sudo cloudinfra diagnostics --output /tmp/bundle.tar.gz
+```
+
+### `cloudinfra provision`
+
+Generates first-boot TLS material and the secrets key. Run automatically by
+`cloudinfra-firstboot.service` on the first boot; you should not need it.
+
+## Service management
+
+The appliance's own services are ordinary systemd units:
+
+```bash
+systemctl status cloudinfra-manager
+systemctl status cloudinfra-agent
+sudo systemctl restart cloudinfra-agent
+
+sudo journalctl -u cloudinfra-manager -n 100
+sudo journalctl -u cloudinfra-agent -n 100
+```
+
+The manager keeps its own structured log at `/var/log/cloudinfra/manager.log`, and the agent
+keeps an append-only journal at `/var/log/cloudinfra/agent-journal.jsonl` — written
+independently of the appliance's database, so a compromised console cannot erase the record
+of what it asked for.
