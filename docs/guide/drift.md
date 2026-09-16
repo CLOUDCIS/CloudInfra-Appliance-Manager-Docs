@@ -23,6 +23,12 @@ looked" and "we looked and it matches" are different facts.
 | NGINX configuration | `/etc/nginx/nginx.conf` |
 | NGINX settings | Individual directives, checked in the assembled configuration |
 
+![Configuration drift](../assets/screenshots/drift.png)
+/// caption
+Targets and their state. Anything belonging to software that is not installed reads
+"not installed here" rather than failing.
+///
+
 ## Reading a finding
 
 Select any row to see what changed. The diff shows added, removed and changed lines, with

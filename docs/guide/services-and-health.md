@@ -16,6 +16,11 @@ Some units cannot be stopped from the console:
 The agent refuses these regardless of what the console offers, so the buttons are disabled
 and explain themselves rather than being offered and then refused.
 
+![Services](../assets/screenshots/services.png)
+/// caption
+Watched units, with the application module's own health and metrics beneath them.
+///
+
 ## Application health
 
 Where a module reports health, it appears on this page. This answers a different question

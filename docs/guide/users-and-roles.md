@@ -18,6 +18,11 @@ is a convenience — the appliance refuses the action regardless of what the int
 Give a username, a display name, a password and one or more roles. Accounts are local to the
 appliance; there is no directory integration in this release.
 
+![Administration](../assets/screenshots/administration.png)
+/// caption
+Accounts, roles, appliance identity and the audit log.
+///
+
 ## Sessions
 
 | | |

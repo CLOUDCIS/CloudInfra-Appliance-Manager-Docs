@@ -13,6 +13,11 @@ rather than presenting a stale reading as current.
 Every pending package is named with its installed and available versions. "Three updates
 available" with no detail is not something you can act on or verify.
 
+![Updates](../assets/screenshots/updates.png)
+/// caption
+Pending updates, each named with its installed and available version.
+///
+
 ## Installing
 
 **Install security updates** upgrades the packages reported as security updates.

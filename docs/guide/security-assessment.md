@@ -12,6 +12,11 @@ Each run is a point-in-time snapshot. The appliance does not patch new readings 
 assessment: a snapshot whose rows were measured at different moments produces a score you
 cannot reproduce from any single observation.
 
+![Security assessment](../assets/screenshots/security.png)
+/// caption
+The score, and findings grouped by category. Each is backed by an observation.
+///
+
 ## What is covered
 
 48 controls across 11 categories:

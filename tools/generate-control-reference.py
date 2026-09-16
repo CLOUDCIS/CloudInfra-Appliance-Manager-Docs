@@ -83,6 +83,11 @@ def main():
         'Severity is how much a failure costs the score. "Remediable" means the appliance can',
         'offer to fix it — see [Remediation](../guide/remediation.md) for why some cannot be.',
         '',
+        '![Security controls](../assets/screenshots/security-controls.png)',
+        '/// caption',
+        'Every control in the set, with its current state on this appliance.',
+        '///',
+        '',
     ]
 
     for category in sorted(by_category):

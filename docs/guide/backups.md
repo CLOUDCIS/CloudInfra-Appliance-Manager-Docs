@@ -15,6 +15,11 @@
 | **Manual** | When you select **Take backup** |
 | **Scheduled** | On the configured schedule |
 
+![Backups](../assets/screenshots/backups.png)
+/// caption
+Each row opens to show exactly which files the backup holds and offers a restore.
+///
+
 ## What is captured
 
 Select any backup to see exactly which files it holds, their sizes, and their state at the

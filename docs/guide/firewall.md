@@ -11,6 +11,11 @@ the second and cannot see the first.
 
 If you cannot reach the console, check both.
 
+![Firewall](../assets/screenshots/firewall.png)
+/// caption
+Rules, and a check on whether a change would disconnect you before it is made.
+///
+
 ## Previewing a change
 
 Every change is assessed before it is made:

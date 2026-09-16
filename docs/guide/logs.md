@@ -17,6 +17,11 @@ You can also select a single service, filter by severity, and search. The search
 in process rather than handed to `journalctl --grep`, because a caller-supplied regular
 expression run by a root process is a denial of service waiting to happen.
 
+![Logs](../assets/screenshots/logs.png)
+/// caption
+System, security and appliance logs, with the application's own log files in their own pane.
+///
+
 ## Application logs
 
 NGINX writes its access and error logs to files, not the journal — `journalctl -u nginx`

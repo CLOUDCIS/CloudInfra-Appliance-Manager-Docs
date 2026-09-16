@@ -49,3 +49,22 @@ vaguely.
 deliberate — a restore that does not reload a service, a control that cannot be remediated,
 a backup that will not write a file back. Documentation that lists the behaviour without the
 reason leaves the reader thinking it is a bug.
+
+## Screenshots
+
+`docs/assets/screenshots/` is captured from a real appliance by a Playwright spec in the
+product repository, so the images come from a running build driven by the same harness that
+tests it rather than from somebody's browser at an unknown moment.
+
+To regenerate after a change to the console:
+
+```bash
+cd /path/to/CloudInfra-Appliance-Manager/dashboard
+APPLIANCE=https://<appliance-ip>:8443 \
+ADMIN_PASSWORD='...' \
+SHOTS_DIR=/path/to/docs/docs/assets/screenshots \
+npx playwright test e2e/screenshots.spec.ts
+```
+
+Seed the appliance with an assessment, a drift check, a backup and a report first, or the
+panels will be empty.

@@ -17,6 +17,11 @@ Alerts tell you when the appliance notices something, without you having to be l
 Thresholds use hysteresis: an alert clears at a lower level than it fires at, so a value
 sitting on the boundary does not produce a stream of identical alerts.
 
+![Alerts](../assets/screenshots/alerts.png)
+/// caption
+What the appliance has noticed, and who it told.
+///
+
 ## Managing them
 
 **Acknowledge** records that somebody has seen it. **Resolve** closes it. Both are recorded

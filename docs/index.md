@@ -6,6 +6,12 @@ what is working.
 
 It ships as an AWS Marketplace AMI with NGINX already installed and managed.
 
+![The appliance overview](assets/screenshots/overview.png)
+/// caption
+The overview: the security score, the application being managed, host health, and whether
+the console may be reachable from outside your network.
+///
+
 ## What it does
 
 <div class="grid cards" markdown>

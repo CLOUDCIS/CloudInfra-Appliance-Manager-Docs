@@ -16,6 +16,11 @@ looking at the console — an auditor, a customer, a change record.
 
 Reports are generated on the appliance and stored on it. They are not sent anywhere.
 
+![Reports](../assets/screenshots/reports.png)
+/// caption
+Generated reports, ready to download. They are stored on the appliance and sent nowhere.
+///
+
 ## What is in one
 
 - The score and how it was reached
