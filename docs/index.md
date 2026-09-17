@@ -20,8 +20,9 @@ the console may be reachable from outside your network.
 
 - **Assesses**
 
-    48 controls across SSH, accounts, networking, filesystem, services, updates and the
-    application itself. Every verdict names what was observed and where.
+    43 controls on any Linux host, plus the ones its application module brings - 5 for
+    NGINX, 9 for GitLab - across SSH, accounts, networking, the filesystem, services,
+    updates and the application itself. Every verdict names what was observed and where.
 
 - **Remediates**
 

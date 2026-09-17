@@ -9,7 +9,7 @@ machinery — packaged with a different application already installed and under 
 | Listing | Application managed | Status |
 |---|---|---|
 | CloudInfra NGINX Appliance Manager | NGINX (reverse proxy, web server) | Available |
-| CloudInfra GitLab Appliance Manager | GitLab | Planned |
+| CloudInfra GitLab Appliance Manager | GitLab | Planned - the GitLab module already ships in every image and manages a GitLab you install yourself |
 | CloudInfra Redis Appliance Manager | Redis | Planned |
 
 Pick the listing for the application you want to run. If you only want the host hardening

@@ -19,19 +19,38 @@ The score, and findings grouped by category. Each is backed by an observation.
 
 ## What is covered
 
-48 controls across 11 categories:
+How many controls an appliance runs depends on what is installed on it. The baseline applies
+to every Linux host; each application module adds its own, and reports its controls as not
+applicable when its application is absent.
+
+| Module | Controls | Applies to |
+|---|---:|---|
+| Generic Linux | 43 | Every appliance, always |
+| NGINX | 5 | Hosts running NGINX |
+| GitLab | 9 | Hosts running GitLab CE |
+
+So an NGINX appliance assesses 48 controls and a GitLab one 52, and the score is calculated
+from the controls that apply rather than from the whole catalogue.
+
+Across all three modules, by category:
 
 | Category | Controls | Examples |
 |---|---:|---|
 | SSH | 11 | Root login, password authentication, attempt limits |
-| Networking | 12 | ICMP redirects, router advertisements, forwarding |
-| Services | 10 | Unnecessary daemons, time synchronisation |
-| Accounts & Authentication | 5 | Password ageing, empty passwords |
+| Networking | 11 | ICMP redirects, router advertisements, exposed monitoring ports |
+| Application Security | 8 | Version disclosure, security headers, transport security |
+| Accounts & Authentication | 7 | Password ageing, empty passwords, sign-up restrictions |
 | Filesystem | 5 | Permissions and mount options |
-| Application Security | 5 | The NGINX module's controls |
-| Firewall, Logging, Operating System, Privileges, Updates | — | Distributed across the above |
+| Operating System | 4 | Kernel and boot settings |
+| Firewall | 3 | Default policy and the management port |
+| Services | 3 | Unnecessary daemons, time synchronisation |
+| Privileges | 2 | sudo configuration |
+| Updates | 2 | Pending security updates, unattended upgrades |
+| Logging | 1 | Persistent journal |
 
-The full list is in the [control catalogue](../reference/controls.md).
+Every control, with its rationale and what it reads, is in the
+[control catalogue](../reference/controls.md) - which is generated from the packs the
+appliance actually loads, so it cannot drift from what it assesses.
 
 ## Reading a verdict
 

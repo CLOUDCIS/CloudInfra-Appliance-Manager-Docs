@@ -1,6 +1,6 @@
 # Control catalogue
 
-The appliance ships **48 controls** across 11 categories.
+The appliance ships **57 controls** across 11 categories.
 
 This page is generated from the control packs the appliance loads, so it describes
 the controls it has rather than the ones somebody remembered shipping. Regenerate it
@@ -22,6 +22,9 @@ Every control in the set, with its current state on this appliance.
 | `ACC-003` | Password maximum age is enforced | low | — |
 | `ACC-004` | Password minimum age is enforced | low | — |
 | `ACC-005` | Users are warned before password expiry | info | — |
+| `GTL-004` | The initial root password file has been removed | high | — |
+| `GTL-005` | Sign-up is closed, or gated by administrator approval | high | — |
+| `GTL-006` | Two-factor authentication is enforced | medium | — |
 
 ### ACC-001 — No account has an empty password
 
@@ -47,15 +50,54 @@ Without warning, expiry locks people out at the worst moment and drives them to 
 
 *Module: `generic-linux`*
 
+### GTL-004 — The initial root password file has been removed
+
+The first reconfigure writes the generated root password to /etc/gitlab/initial_root_password. GitLab removes it 24 hours after that reconfigure - which, on an image, happened during the build. A copy still present on a running instance is a root credential sitting in a file, and one that may have been readable in the image before the instance ever booted.
+
+*Module: `gitlab`*
+
+### GTL-005 — Sign-up is closed, or gated by administrator approval
+
+A default GitLab has sign-up enabled. On an instance reachable from the internet that means anybody can create an account; with administrator approval also switched on they cannot use it until somebody says so, which is the difference between a queue and an open door.
+
+*Module: `gitlab`*
+
+### GTL-006 — Two-factor authentication is enforced
+
+GitLab holds source code, deployment credentials and CI variables, and reaches production through its runners. A password alone is what stands between a phished credential and all of it.
+
+*Module: `gitlab`*
+
 ## Application Security
 
 | ID | Control | Severity | Remediable |
 |---|---|---|---|
+| `GTL-001` | GitLab is reached over HTTPS | critical | — |
+| `GTL-002` | external_url is not the shipped placeholder | high | — |
+| `GTL-003` | GitLab's secrets were generated on this instance | critical | — |
 | `NGX-001` | NGINX does not advertise its version | low | Yes |
 | `NGX-002` | A frame-ancestors or X-Frame-Options policy is set | medium | Yes |
 | `NGX-003` | Content type sniffing is disabled | low | Yes |
 | `NGX-004` | Obsolete TLS versions are not offered | high | Yes |
 | `NGX-005` | A request body size limit is set | medium | — |
+
+### GTL-001 — GitLab is reached over HTTPS
+
+external_url decides the scheme GitLab serves on, builds its clone URLs from, and redirects to. Left at http:// every password, personal access token, and git credential crosses the network in the clear, and every repository URL GitLab hands out tells clients to do the same. The shipped configuration is http://, so this is the state a GitLab is in until somebody changes it.
+
+*Module: `gitlab`*
+
+### GTL-002 — external_url is not the shipped placeholder
+
+The package ships external_url as http://gitlab.example.com and GitLab believes it. Clone URLs, redirects after sign-in, webhook callbacks and emailed links are all built from it, so an instance left on the placeholder hands out addresses that resolve to somebody else's domain or to nothing at all - quietly, and only for the people receiving them.
+
+*Module: `gitlab`*
+
+### GTL-003 — GitLab's secrets were generated on this instance
+
+/etc/gitlab/gitlab-secrets.json holds the keys every encrypted column in GitLab's database is encrypted with - 32 of them on a default install, covering CI/CD variables, personal access tokens and two-factor secrets. If that file is older than the instance it is on, it came from the image, and every instance launched from that image has the same keys.
+
+*Module: `gitlab`*
 
 ### NGX-001 — NGINX does not advertise its version
 
@@ -95,6 +137,7 @@ NGINX defaults to a 1 MB body limit, which is safe, but a configuration that rai
 | `FS-002` | The passwd file is not world-writable | critical | — |
 | `FS-004` | The SSH daemon configuration is not world-writable | critical | — |
 | `FS-005` | The cron table directory is not world-writable | high | — |
+| `GTL-008` | The secrets file is readable only by root | high | — |
 
 ### FS-001 — The shadow password file is not world-readable
 
@@ -119,6 +162,12 @@ A writable sshd_config lets an unprivileged user re-enable root login or passwor
 Anyone who can write a crontab can schedule a command as root. It is one of the most reliable persistence mechanisms on a Linux host.
 
 *Module: `generic-linux`*
+
+### GTL-008 — The secrets file is readable only by root
+
+Anything that can read /etc/gitlab/gitlab-secrets.json can decrypt every encrypted column in the database. The package creates it 0600 root; anything wider is something an administrator did, usually while copying it somewhere.
+
+*Module: `gitlab`*
 
 ## Firewall
 
@@ -162,6 +211,8 @@ Without a running logger there is no record of what happened on the appliance, w
 
 | ID | Control | Severity | Remediable |
 |---|---|---|---|
+| `GTL-007` | The NGINX status page is not reachable from outside | medium | Yes |
+| `GTL-010` | Prometheus monitoring endpoints are not reachable from outside | medium | — |
 | `NET-001` | IP forwarding is disabled | high | Yes |
 | `NET-002` | ICMP redirects are not accepted | medium | Yes |
 | `NET-003` | Secure ICMP redirects are not accepted | medium | Yes |
@@ -171,6 +222,18 @@ Without a running logger there is no record of what happened on the appliance, w
 | `NET-007` | SYN cookies are enabled | medium | Yes |
 | `NET-008` | ICMP redirects are not sent | low | Yes |
 | `NET-009` | IPv6 router advertisements are not accepted | medium | Yes |
+
+### GTL-007 — The NGINX status page is not reachable from outside
+
+A default install serves nginx's status page on 0.0.0.0:8060. Anyone who can reach that port gets the instance's connection counts, and nothing outside the host needs them.
+
+*Module: `gitlab`*
+
+### GTL-010 — Prometheus monitoring endpoints are not reachable from outside
+
+Omnibus runs Prometheus, alertmanager and a set of exporters. On a default install alertmanager listens on every interface, and the exporters describe the instance in detail to anyone who can reach them.
+
+*Module: `gitlab`*
 
 ### NET-001 — IP forwarding is disabled
 

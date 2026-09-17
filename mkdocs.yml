@@ -82,6 +82,7 @@ nav:
   - Modules:
       - Overview: modules/index.md
       - NGINX: modules/nginx.md
+      - GitLab: modules/gitlab.md
       - Generic Linux: modules/generic-linux.md
   - Reference:
       - Control catalogue: reference/controls.md

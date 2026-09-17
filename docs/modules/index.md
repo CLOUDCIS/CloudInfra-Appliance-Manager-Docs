@@ -30,12 +30,17 @@ detection.
 | Module | Capabilities | Controls |
 |---|---:|---:|
 | [NGINX](nginx.md) | 10 | 5 |
+| [GitLab](gitlab.md) | 10 | 9 |
 | [Generic Linux](generic-linux.md) | 3 | 43 |
 
-Generic Linux is present on every image. The application module is the one the listing you
-launched is named after — NGINX today, with GitLab and Redis to follow. An image carries the
-module for its own application, so the console only ever offers you controls for software
-that is actually there.
+Generic Linux is present on every image and always active. The application modules are
+compiled into the appliance, and each one detects whether its application is installed here:
+on a host running GitLab, the GitLab module is active and the NGINX module reports NGINX as
+not installed — including on a GitLab server, whose bundled NGINX belongs to GitLab and is
+not the appliance's to manage.
+
+So the console only ever offers you controls for software that is actually present, and an
+appliance managing one application says nothing about the others.
 
 ## When an application is not installed
 
